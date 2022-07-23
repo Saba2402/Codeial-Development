@@ -10,14 +10,14 @@ module.exports.profile = function(req,res){
 //render the sign up page
 module.exports.signUp = function(req,res){
     return res.render('user_sign_up',{
-        title : "Chatting Engine | Sign Up"
+        title : "Codeial | Sign Up"
     })
 }
 
 //render the sign in page
 module.exports.signIn = function(req,res){
     return res.render('user_sign_in',{
-        title : "Chatting Engine | Sign In"
+        title : "Codeial | Sign In"
     })
 }
 
@@ -33,10 +33,8 @@ module.exports.create = function(req,res){
         if(!user){
             User.create(req.body,function(err,user){
                 if(err){
-                    console,log('error in creating the user while signing up');
-                    return;
-                }
-                return res.redirect('/users/sign-in');
+                    console.log('error in creating the user while signing up');return;}
+                    return res.redirect('/users/sign-in');
             });
         }else{
             return res.redirect('back');
