@@ -1,0 +1,15 @@
+{
+  "name": "chatting_engine",
+  "version": "1.0.0",
+  "description": "my social media web application",
+  "main": "chat.js",
+  "scripts": {
+    "start" : "nodemon chat.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Saba Parveen",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.18.1"
+  }
+}
