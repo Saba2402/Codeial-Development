@@ -1,7 +1,13 @@
 //we are using const as we dont want var to be overridden by others
 const express = require('express');
+const cookieParser = require('cookie-parser');
 const app = express();
 const port  = 8000;
+
+//const expressLayouts = require('express-ejs-layouts');
+//const db = require('./config/mongoose');
+app.use(express.urlencoded());
+app.use(cookieParser());
 
 //use express router
 app.use('/',require('./routes/index'));
