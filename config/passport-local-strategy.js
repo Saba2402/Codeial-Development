@@ -1,5 +1,7 @@
 const passport = require('passport');
+
 const LocalStrategy = require('passport-local').Strategy;
+
 const User = require('../models/user');
 
 //authentication using passport
@@ -22,8 +24,6 @@ function(req,email,password,done){
    });
 }
 ));
-
-//serialize and deserialize user
 
 //serializing the user to decide which key is t be kept in the cookies
 passport.serializeUser(function(user,done){

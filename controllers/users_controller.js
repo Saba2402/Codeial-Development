@@ -1,5 +1,6 @@
 const User = require('../models/user');
 
+// let's keep it same as before
 module.exports.profile = function(req,res){
     User.findById(req.params.id,function(err,user){
         return res.render('user_profile',{
@@ -16,6 +17,7 @@ module.exports.update = function(req,res){
             return res.redirect('back');
         });
     }else{
+        req.flash('error', 'Unauthorized!');
         return res.status(401).send('Unauthorized');
     }
 }
@@ -47,18 +49,20 @@ module.exports.signIn = function(req,res){
 
 module.exports.create = function(req,res){
     if(req.body.password != req.body.confirm_password){
+        req.flash('error', 'Passwords do not match');
         return res.redirect('back');
     }
     User.findOne({email:req.body.email},function(err,user){
-        if(err){console.log('error in finding the user in signing up');return}
+        if(err){req.flash('error', err); return}
 
         if(!user){
             User.create(req.body,function(err,user){
-                if(err){
-                    console.log('error in creating the user while signing up');return}
-                    return res.redirect('/users/sign-in');
+                if(err){req.flash('error', err); return}
+                    
+                return res.redirect('/users/sign-in');
             })
         }else{
+            req.flash('success', 'You have signed up, login to continue!');
             return res.redirect('back');
         }
     });
