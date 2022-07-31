@@ -20,7 +20,7 @@ const customMware = require('./config/middleware');
 //write just before restarting of server
 app.use(sassMiddleware({
     src : './assets/scss',
-    dest : './assets/css',
+    dest : './assets/css', 
     debug : true,
     outputStyle : 'extended',
     prefix : '/css'
